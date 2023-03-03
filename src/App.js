@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import BackDrop from "./BackDrop";
+import Drawer from "./Drawer";
 
 function App() {
+  const [show, setShow] = useState(false)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <button
+        onClick={() => setShow(!show)}
+        className="bg-cyan-400 rounded p-2 text-white font-semibold shadow-sm m-5 hover:bg-cyan-500">
+        Save Segment
+      </button>
+      {show && <BackDrop onClick={() => setShow(!show)} />}
+      <Drawer show={show} onClick={() => setShow(!show)} />
     </div>
   );
 }
